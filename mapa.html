@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<script src= "js/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script src='//maps.googleapis.com/maps/api/js?sensor=false'></script>
+<script src='js/lodash.min.js'></script>
+<script src='js/angular-google-maps.min.js'></script>
+<script src='js/quecomer.js'></script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<body>
+<div ng-app="queComerApp">
+<div ng-include src="'header.html'"></div>
+<div ng-controller="formCtrl">
+  <form novalidate>
+      <div class="row">
+        <div class="col-sm-4">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h3 class="panel-title">Mapa</h3>
+            </div>
+            <div class="panel-body">
+			
+				<ui-gmap-google-map center='map.center' zoom='map.zoom'></ui-gmap-google-map>
+			
+            </div>
+          </div>
+	</div>
+  </form>
+ <!-- <p>form = {{user }}</p>
+  <p>master = {{master}}</p>-->
+</div>
+
+       <div ng-include src="'footer.html'"></div>
+</div>
+<script>
+var app = angular.module('queComerApp', []);
+app.controller('formCtrl', function($scope) {
+    $scope.master = {firstName:"John", lastName:"Doe"};
+    $scope.reset = function() {
+        $scope.user = angular.copy($scope.master);
+    };
+    $scope.reset();
+});
+</script>
+</body>
+</html>
